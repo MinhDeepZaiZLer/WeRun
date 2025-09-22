@@ -133,51 +133,61 @@ fun EditProfileDialog(uiState: ProfileUiState, viewModel: ProfileViewModel, onDi
     var dob by remember { mutableStateOf(uiState.editedUser?.dob ?: "") }
     var address by remember { mutableStateOf(uiState.editedUser?.address ?: "") }
     var gender by remember { mutableStateOf(uiState.editedUser?.gender ?: "") }
-    var isPublic by remember { mutableStateOf(uiState.editedUser?.public?.toString() ?: "false") }
+    var isPublic by remember { mutableStateOf(uiState.editedUser?.public ?: false) }
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Edit Profile") },
+        title = { Text("Edit Profile", fontWeight = FontWeight.Bold) },
         text = {
-            Column {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 OutlinedTextField(
                     value = fullName,
                     onValueChange = { fullName = it },
                     label = { Text("Full Name") },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true
                 )
                 OutlinedTextField(
                     value = phoneNumber,
                     onValueChange = { phoneNumber = it },
                     label = { Text("Phone Number") },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true
                 )
                 OutlinedTextField(
                     value = dob,
                     onValueChange = { dob = it },
                     label = { Text("Date of Birth") },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true
                 )
                 OutlinedTextField(
                     value = address,
                     onValueChange = { address = it },
                     label = { Text("Address") },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true
                 )
                 OutlinedTextField(
                     value = gender,
                     onValueChange = { gender = it },
                     label = { Text("Gender") },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true
                 )
-                OutlinedTextField(
-                    value = isPublic,
-                    onValueChange = { isPublic = it },
-                    label = { Text("Public Profile (true/false)") },
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth()
-                )
+                ) {
+                    Text("Public Profile", modifier = Modifier.weight(1f))
+                    Switch(
+                        checked = isPublic,
+                        onCheckedChange = { isPublic = it },
+                        modifier = Modifier.weight(1f)
+                    )
+                }
             }
         },
         confirmButton = {
@@ -188,10 +198,11 @@ fun EditProfileDialog(uiState: ProfileUiState, viewModel: ProfileViewModel, onDi
                     viewModel.updateField("dob", dob)
                     viewModel.updateField("address", address)
                     viewModel.updateField("gender", gender)
-                    viewModel.updateField("public", isPublic)
+                    viewModel.updateField("public", isPublic.toString())
                     viewModel.saveProfile()
                     onDismiss()
-                }
+                },
+                modifier = Modifier.padding(end = 8.dp)
             ) {
                 Icon(Icons.Default.Save, contentDescription = "Save")
                 Spacer(modifier = Modifier.width(8.dp))
@@ -199,7 +210,9 @@ fun EditProfileDialog(uiState: ProfileUiState, viewModel: ProfileViewModel, onDi
             }
         },
         dismissButton = {
-            Button(onClick = onDismiss) { Text("Cancel") }
+            Button(onClick = onDismiss, modifier = Modifier.padding(end = 8.dp)) {
+                Text("Cancel")
+            }
         }
     )
 }
