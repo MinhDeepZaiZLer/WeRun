@@ -133,7 +133,7 @@ fun NavigationDrawerContent(
                     drawerState.close()
                     FirebaseAuth.getInstance().signOut()
                     // Quay về HomeScreen hoặc kết thúc ứng dụng
-                    navController.navigate("home") {
+                    navController.navigate("auth") {
                         popUpTo(navController.graph.startDestinationId) { inclusive = true }
                     }
                 }
