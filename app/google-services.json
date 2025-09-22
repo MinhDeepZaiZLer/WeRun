@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "115413881897",
+    "project_id": "werun-dattvku2025",
+    "storage_bucket": "werun-dattvku2025.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115413881897:android:bda141ff2eeba5cb043838",
+        "android_client_info": {
+          "package_name": "com.example.werun"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpZdPriMVrKkHvF5sDp84GQs4rZABFBAM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

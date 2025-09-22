@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WeRun</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoibWluaHNvZGVlcCIsImEiOiJjbWFxbnF4cXEwMXJ1Mm1weWNlMjMzM2swIn0.kCOAaSSzFck9YUTW3sHqxg</string>
+</resources>
